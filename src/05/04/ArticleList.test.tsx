@@ -10,6 +10,7 @@ test("タイトルの表示", () => {
 test("items の数だけ一覧表示される", () => {
   render(<ArticleList items={items} />);
   expect(screen.getAllByRole("listitem")).toHaveLength(3);
+  expect(screen.getByRole("list")).toBeInTheDocument();
 });
 
 test("items の数だけ一覧表示される", () => {

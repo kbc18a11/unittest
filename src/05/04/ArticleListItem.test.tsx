@@ -9,6 +9,7 @@ const item: ItemProps = {
 
 test("ID に紐づいたリンクが表示される", () => {
   render(<ArticleListItem {...item} />);
+  expect(screen.getByText("TypeScript を使ったテストの書き方")).toBeInTheDocument();
   expect(screen.getByRole("link", { name: "もっと見る" })).toHaveAttribute(
     "href",
     "/articles/howto-testing-with-typescript"
