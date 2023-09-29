@@ -10,9 +10,7 @@ export const Form = () => {
       <h2 id={headingId}>新規アカウント登録</h2>
       <InputAccount />
       <Agreement
-        onChange={(event) => {
-          setChecked(event.currentTarget.checked);
-        }}
+        onChange={(event) => setChecked(event.currentTarget.checked)}
       />
       <div>
         <button disabled={!checked}>サインアップ</button>
