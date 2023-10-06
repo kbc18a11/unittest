@@ -60,11 +60,18 @@ test("不明なエラー時「不明なエラーが発生しました」が表�
   expect(screen.getByText("不明なエラーが発生しました")).toBeInTheDocument();
 });
 
-test("Snapshot: 登録フォームが表示される", async () => {
+test("Snapshot: 初回レンダリング", async () => {
   mockPostMyAddress();
-  // const mockFn = mockPostMyAddress();
   const { container } = render(<RegisterAddress />);
-  // const submitValues = await fillValuesAndSubmit();
-  // expect(mockFn).toHaveBeenCalledWith(expect.objectContaining(submitValues));
   expect(container).toMatchSnapshot();
 });
+
+test("Snapshot: 登録フォームが表示される", async () => {
+  mockPostMyAddress();
+  const mockFn = mockPostMyAddress();
+  const { container } = render(<RegisterAddress />);
+  const submitValues = await fillValuesAndSubmit();
+  expect(mockFn).toHaveBeenCalledWith(expect.objectContaining(submitValues));
+  expect(container).toMatchSnapshot();
+});
+
